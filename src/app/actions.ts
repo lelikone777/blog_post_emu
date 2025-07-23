@@ -39,9 +39,9 @@ export async function handleSubmission(formData: FormData) {
 
   const data = await prisma.blogPost.create({
     data: {
-      title: 'title' as string,
-      content: 'content' as string,
-      imageUrl: 'imageUrl' as string,
+      title: title as string,
+      content: content as string,
+      imageUrl: imageUrl as string,
       authorId: user.id,
       authorImage: user.picture as string,
       authorName: user.given_name as string,
