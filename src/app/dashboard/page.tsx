@@ -22,6 +22,17 @@ export default async function DashboardRoute() {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
+  if (!user) {
+    return (
+      <div className="flex h-[50vh] flex-col items-center justify-center">
+        <h2 className="mb-4 text-2xl font-semibold">Please sign in to view your dashboard</h2>
+        <Link className={buttonVariants()} href="/api/auth/login">
+          Sign In
+        </Link>
+      </div>
+    );
+  }
+
   const data = await getData(user.id);
 
   return (
@@ -33,7 +44,17 @@ export default async function DashboardRoute() {
         </Link>
       </div>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {data.map((item: any) => (
+        {data.map((item: {
+          id: string;
+          title: string;
+          content: string;
+          imageUrl: string;
+          authorId: string;
+          authorName: string;
+          authorImage: string;
+          createdAt: Date;
+          updatedAt: Date;
+        }) => (
           <BlogPostCard data={item} key={item.id} />
         ))}
       </div>
