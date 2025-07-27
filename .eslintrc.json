@@ -1,12 +1,37 @@
 {
   "extends": ["next", "next/core-web-vitals"],
   "ignorePatterns": [
-    "**/generated/**"
+    ".next/**",
+    "node_modules/**",
+    "**/generated/**",
+    "**/prisma/generated/**",
+    "**/prisma/client.js",
+    "**/prisma/default.js",
+    "**/prisma/edge.js",
+    "**/prisma/index-browser.js",
+    "**/prisma/index.d.ts",
+    "**/prisma/index.js",
+    "**/prisma/runtime/**"
   ],
   "rules": {
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
-    "@typescript-eslint/no-unused-expressions": "off"
-  }
+    "@typescript-eslint/no-unused-expressions": "off",
+    "@typescript-eslint/no-unsafe-function-type": "off",
+    "@typescript-eslint/no-empty-object-type": "off",
+    "@typescript-eslint/no-unnecessary-type-constraint": "off",
+    "@typescript-eslint/no-this-alias": "off",
+    "@typescript-eslint/no-require-imports": "off"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "excludedFiles": ["**/prisma/**"],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "warn",
+        "@typescript-eslint/no-var-requires": "error"
+      }
+    }
+  ]
 }
