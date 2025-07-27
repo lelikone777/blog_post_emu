@@ -44,17 +44,7 @@ export default async function DashboardRoute() {
         </Link>
       </div>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {data.map((item: {
-          id: string;
-          title: string;
-          content: string;
-          imageUrl: string;
-          authorId: string;
-          authorName: string;
-          authorImage: string;
-          createdAt: Date;
-          updatedAt: Date;
-        }) => (
+        {data.map((item: any) => (
           <BlogPostCard data={item} key={item.id} />
         ))}
       </div>
