@@ -1,33 +1,23 @@
-import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
-import {
-  RegisterLink,
-  LoginLink,
-  LogoutLink,
-} from "@kinde-oss/kinde-auth-nextjs/components";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import Link from 'next/link';
+import { buttonVariants } from '@/components/ui/button';
+import { RegisterLink, LoginLink, LogoutLink } from '@kinde-oss/kinde-auth-nextjs/components';
+import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 
 export async function Navbar() {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
   return (
-    <nav className="py-5 flex itcems-center justify-between">
-      <div className="flex itcems-center gap-6">
-        <Link href="/public">
-          <h1 className="text-3xl text-blue-500 font-bold">LOGO</h1>
+    <nav className="itcems-center flex justify-between py-5">
+      <div className="itcems-center flex gap-6">
+        <Link href="/">
+          <h1 className="text-3xl font-bold text-blue-500">LOGO</h1>
         </Link>
 
         <div className="flex items-center gap-6">
-          <Link
-            className="hover:text-blue-500 transition-colors"
-            href="/public"
-          >
+          <Link className="transition-colors hover:text-blue-500" href="/">
             Home
           </Link>
-          <Link
-            className="hover:text-blue-500 transition-colors"
-            href="/dashboard"
-          >
+          <Link className="transition-colors hover:text-blue-500" href="/dashboard">
             Dashboard
           </Link>
         </div>
@@ -36,17 +26,13 @@ export async function Navbar() {
       {user ? (
         <div className="flex items-center gap-4">
           <p>{user.given_name}</p>
-          <LogoutLink className={buttonVariants({ variant: "secondary" })}>
-            Logout
-          </LogoutLink>
+          <LogoutLink className={buttonVariants({ variant: 'secondary' })}>Logout</LogoutLink>
         </div>
       ) : (
-        <div className="flex ictems-center gap-4">
+        <div className="ictems-center flex gap-4">
           <LoginLink className={buttonVariants()}>Login</LoginLink>
 
-          <RegisterLink className={buttonVariants({ variant: "secondary" })}>
-            Sign up
-          </RegisterLink>
+          <RegisterLink className={buttonVariants({ variant: 'secondary' })}>Sign up</RegisterLink>
         </div>
       )}
     </nav>

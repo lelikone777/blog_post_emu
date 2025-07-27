@@ -1,5 +1,5 @@
-import { BlogPostCard } from '@/components/general/BlogpostCard';
-import { prisma } from './utils/db';
+import { BlogPostCard } from '@/components/general/BlogPostCard';
+import { prisma } from '@/utils/db';
 import { Suspense } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 
